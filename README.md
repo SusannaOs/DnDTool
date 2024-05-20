@@ -1,22 +1,36 @@
-# Albatross_Strategy
+# DnDTool
 
-Media website for Albatross Strategy. Here you can put a description and documentation for the website.
+Collection of handy DnD tools in one website.
+
+## Things to implement in the future
+
+* Adding a function to save your work on pc if needed.
+* Making proper explanations with info buttons for new players. Opening with hovering over if needed.
+* Header and footer with navigation.
+* How to make the combat tracker save as much time as possible in turn based rounds and be user friendly.
+* Making new page for collection of items, spells etc. and a way to add custom ones.
+* Another page for full character creation. Could be implemented with the point buy system as it kind of is part of it.
+* Tutorial pages and tips on how mechanical things work.
 
 ## Quick Install
 
-Intall React by writing `npx create-react-app my-app` to the terminal and let it install. (If you installed it into your github folder, it will create my-app folder, where the react app is located in. Move everything finside from my-app fodler to the main folder and delete the empty my-app).
+Install React by writing `npx create-react-app my-app` to the terminal and let it install. (If you installed it into your github folder, it will create my-app folder, where the react app is located in. Move everything inside from my-app folder to the main folder and delete the empty my-app).
 
 After installing react app, install sass compiler `npm install -g sass` in the terminal.
+
+### Other packages
+
+* React router dom: install with ```npm i react-router-dom``` and you can go between pages in live server with adding /#*pagename path*.
 
 ## Quick Start
 
 Start development environment by putting commands into terminal:
 
 ... `sass --watch src/sass/index.scss src/index.css`
-This will compile all sass files into index.css automatically when saving
+This will compile all sass files into index.css automatically when saving.
 
 ... `npm start`
-This will start the react live server so you can see the changes in realtime
+This will start the react live server so you can see the changes in realtime.
 
 ## Sass
 

@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './pages/home/App';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import CombatTracker from './js/Pages/CombatTracker';
+import PointBuy from './js/Pages/PointBuy';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Routes>
+        <Route path="/" element={<PointBuy />} />
+        <Route path="/Tracker" element={<CombatTracker/>}/>
+      </Routes>
+    </Router>
   </React.StrictMode>
 );
 
