@@ -92,21 +92,20 @@ const Pointbuy = () => {
     return scores[ability] + races[selectedRace][ability];
   };
 
-  const handleNewRaceChange = (event) => {
-    const { name, value } = event.target;
-    setNewRace((prev) => ({ ...prev, [name]: parseInt(value) || value }));
+  const calculateModifier = (score) => {
+    return Math.floor((score - 10) / 2);
+  };
+
+  const handleNewRaceChange = (ability, newScore) => {
+    setNewRace((prev) => ({ ...prev, [ability]: newScore }));
   };
 
   const handleAddRace = () => {
     if (newRace.name.trim() === "") {
-      // If the race name is empty, set an error message and return
       setErrorMessage("Race name cannot be empty");
       return;
     }
-    // If the race name is not empty, clear any existing error message
     setErrorMessage("");
-
-    // Add the new race
     setRaces((prevRaces) => ({
       ...prevRaces,
       [newRace.name.toLowerCase()]: {
@@ -152,6 +151,7 @@ const Pointbuy = () => {
               ability={ability}
               score={scores[ability]}
               finalScore={getFinalScore(ability)}
+              modifier={calculateModifier(scores[ability])}
               onScoreChange={handleScoreChange}
             />
           ))}
@@ -164,27 +164,42 @@ const Pointbuy = () => {
             type="text"
             name="name"
             value={newRace.name}
-            onChange={handleNewRaceChange}
+            onChange={(e) => setNewRace({ ...newRace, name: e.target.value })}
             placeholder="Race Name"
           />
           {errorMessage && <p className="error-message">{errorMessage}</p>}
-          {Object.keys(scores).map((ability) => (
-            <div key={ability}>
+          {Object.keys(initialScores).map((ability) => (
+            <div key={ability} className="ability-score-input">
               <label htmlFor={ability}>
                 {ability.charAt(0).toUpperCase() + ability.slice(1)}
               </label>
-              <input
-                id={ability}
-                type="number"
-                name={ability}
-                value={newRace[ability]}
-                onChange={handleNewRaceChange}
-                placeholder={
-                  ability.charAt(0).toUpperCase() +
-                  ability.slice(1) +
-                  " Modifier"
-                }
-              />
+              <div className="score-controls">
+                <button
+                  type="button"
+                  onClick={() =>
+                    handleNewRaceChange(ability, newRace[ability] - 1)
+                  }
+                  disabled={newRace[ability] <= 0}
+                >
+                  -
+                </button>
+                <input
+                  id={ability}
+                  type="number"
+                  name={ability}
+                  value={newRace[ability]}
+                  readOnly
+                />
+                <button
+                  type="button"
+                  onClick={() =>
+                    handleNewRaceChange(ability, newRace[ability] + 1)
+                  }
+                  disabled={newRace[ability] >= 2}
+                >
+                  +
+                </button>
+              </div>
             </div>
           ))}
           <button onClick={handleAddRace}>Add Race</button>
@@ -201,16 +216,33 @@ const PointsRemaining = ({ points }) => (
   </div>
 );
 
-const AbilityScoreInput = ({ ability, score, finalScore, onScoreChange }) => (
+const AbilityScoreInput = ({
+  ability,
+  score,
+  finalScore,
+  modifier,
+  onScoreChange,
+}) => (
   <div className="ability-score-input">
     <label>{ability.charAt(0).toUpperCase() + ability.slice(1)}</label>
-    <input
-      type="number"
-      value={score}
-      min="8"
-      max="15"
-      onChange={(e) => onScoreChange(ability, parseInt(e.target.value))}
-    />
+    <div className="score-controls">
+      <button
+        type="button"
+        onClick={() => onScoreChange(ability, score - 1)}
+        disabled={score <= 8}
+      >
+        -
+      </button>
+      <input type="number" value={score} readOnly />
+      <button
+        type="button"
+        onClick={() => onScoreChange(ability, score + 1)}
+        disabled={score >= 15}
+      >
+        +
+      </button>
+    </div>
+    <span>Modifier: {modifier >= 0 ? `+${modifier}` : modifier}</span>
     <span>Final Score: {finalScore}</span>
   </div>
 );
