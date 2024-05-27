@@ -1,10 +1,13 @@
+import React from 'react';
 
-function Footer() {
-    return (
-        <header>
-            <h1>Footer Component</h1>
-        </header>
-    );
-  }
-  
-  export default Footer;
+const Footer = () => {
+  return (
+    <footer className="footer">
+      <div className="container">
+        <p className="text-center">&copy; 2024 DnD Tools. All rights reserved.</p>
+      </div>
+    </footer>
+  );
+}
+
+export default Footer;

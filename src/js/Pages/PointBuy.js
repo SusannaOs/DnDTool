@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "../Components/Header";
+import Footer from "../Components/Footer";
 
 const pointCost = {
   8: 0,
@@ -123,7 +124,7 @@ const Pointbuy = () => {
     <div>
       <Header />
       <div className="Pointbuy">
-        <h1>D&D Point Buy System</h1>
+        <h1>DnD Point Buy System</h1>
         <div>
           <label htmlFor="race">Select Race:</label>
           <select id="race" value={selectedRace} onChange={handleRaceChange}>
@@ -171,6 +172,7 @@ const Pointbuy = () => {
           <button onClick={handleAddRace}>Add Race</button>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
