@@ -1,0 +1,70 @@
+$primary-font-family: 'Roboto', sans-serif;
+$secondary-font-family: 'Open Sans', sans-serif;
+
+$base-font-size: 16px;
+$heading-font-size: 24px;
+
+$line-height: 1.5;
+$heading-line-height: 1.2;
+
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+// Base Typography
+body {
+    font-family: $primary-font-family;
+    font-size: $base-font-size;
+    line-height: $line-height;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $secondary-font-family;
+    line-height: $heading-line-height;
+  }
+  
+  h1 {
+    font-size: $heading-font-size;
+  }
+ 
+  // Text Utilities
+.text-center {
+    text-align: center;
+  }
+  
+  .text-bold {
+    font-weight: $font-weight-bold;
+  }
+  
+  .text-muted {
+    color: #999;
+  }
+  
+  .text-uppercase {
+    text-transform: uppercase;
+  }
+
+@media (max-width: 768px) {
+    body {
+      font-size: 14px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    body {
+      font-size: 18px;
+    }
+  }
+  
+  ul, ol {
+    margin-left: 1.5rem;
+  }
+  
+  a {
+    color: blue;
+    text-decoration: underline;
+  
+    &:hover {
+      color: darkblue;
+    }
+  }
+  
