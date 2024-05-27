@@ -65,6 +65,7 @@ const Pointbuy = () => {
   const [selectedRace, setSelectedRace] = useState("human");
   const [races, setRaces] = useState(initialRaces);
   const [newRace, setNewRace] = useState(initialNewRace);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const calculatePoints = (newScores) => {
     const totalPoints = Object.values(newScores).reduce(
@@ -98,8 +99,14 @@ const Pointbuy = () => {
 
   const handleAddRace = () => {
     if (newRace.name.trim() === "") {
+      // If the race name is empty, set an error message and return
+      setErrorMessage("Race name cannot be empty");
       return;
     }
+    // If the race name is not empty, clear any existing error message
+    setErrorMessage("");
+
+    // Add the new race
     setRaces((prevRaces) => ({
       ...prevRaces,
       [newRace.name.toLowerCase()]: {
@@ -157,22 +164,30 @@ const Pointbuy = () => {
             onChange={handleNewRaceChange}
             placeholder="Race Name"
           />
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
           {Object.keys(scores).map((ability) => (
-            <input
-              key={ability}
-              type="number"
-              name={ability}
-              value={newRace[ability]}
-              onChange={handleNewRaceChange}
-              placeholder={
-                ability.charAt(0).toUpperCase() + ability.slice(1) + " Modifier"
-              }
-            />
+            <div key={ability}>
+              <label htmlFor={ability}>
+                {ability.charAt(0).toUpperCase() + ability.slice(1)}
+              </label>
+              <input
+                id={ability}
+                type="number"
+                name={ability}
+                value={newRace[ability]}
+                onChange={handleNewRaceChange}
+                placeholder={
+                  ability.charAt(0).toUpperCase() +
+                  ability.slice(1) +
+                  " Modifier"
+                }
+              />
+            </div>
           ))}
           <button onClick={handleAddRace}>Add Race</button>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
