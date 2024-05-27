@@ -4,6 +4,7 @@ import './index.css';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import CombatTracker from './js/Pages/CombatTracker';
 import PointBuy from './js/Pages/PointBuy';
+import Home from './js/Pages/Home';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,7 +12,8 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<PointBuy />} />
-        <Route path="/Tracker" element={<CombatTracker/>}/>
+        <Route path="/CombatTracker" element={<CombatTracker />} />
+        <Route path="/Home" element={<Home />}/>
       </Routes>
     </Router>
   </React.StrictMode>

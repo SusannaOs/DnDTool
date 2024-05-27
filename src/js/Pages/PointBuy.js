@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import Header from "../Components/Header";
 
 const pointCost = {
   8: 0,
@@ -8,13 +9,34 @@ const pointCost = {
   12: 4,
   13: 5,
   14: 7,
-  15: 9
+  15: 9,
 };
 
 const initialRaces = {
-  human: { strength: 1, dexterity: 1, constitution: 1, intelligence: 1, wisdom: 1, charisma: 1 },
-  elf: { strength: 0, dexterity: 2, constitution: 0, intelligence: 0, wisdom: 1, charisma: 0 },
-  dwarf: { strength: 0, dexterity: 0, constitution: 2, intelligence: 0, wisdom: 1, charisma: 0 }
+  human: {
+    strength: 1,
+    dexterity: 1,
+    constitution: 1,
+    intelligence: 1,
+    wisdom: 1,
+    charisma: 1,
+  },
+  elf: {
+    strength: 0,
+    dexterity: 2,
+    constitution: 0,
+    intelligence: 0,
+    wisdom: 1,
+    charisma: 0,
+  },
+  dwarf: {
+    strength: 0,
+    dexterity: 0,
+    constitution: 2,
+    intelligence: 0,
+    wisdom: 1,
+    charisma: 0,
+  },
 };
 
 const initialScores = {
@@ -23,20 +45,31 @@ const initialScores = {
   constitution: 8,
   intelligence: 8,
   wisdom: 8,
-  charisma: 8
+  charisma: 8,
 };
 
-const initialNewRace = { name: '', strength: 0, dexterity: 0, constitution: 0, intelligence: 0, wisdom: 0, charisma: 0 };
+const initialNewRace = {
+  name: "",
+  strength: 0,
+  dexterity: 0,
+  constitution: 0,
+  intelligence: 0,
+  wisdom: 0,
+  charisma: 0,
+};
 
-const App = () => {
+const Pointbuy = () => {
   const [scores, setScores] = useState(initialScores);
   const [points, setPoints] = useState(27);
-  const [selectedRace, setSelectedRace] = useState('human');
+  const [selectedRace, setSelectedRace] = useState("human");
   const [races, setRaces] = useState(initialRaces);
   const [newRace, setNewRace] = useState(initialNewRace);
 
   const calculatePoints = (newScores) => {
-    const totalPoints = Object.values(newScores).reduce((sum, score) => sum + pointCost[score], 0);
+    const totalPoints = Object.values(newScores).reduce(
+      (sum, score) => sum + pointCost[score],
+      0
+    );
     return 27 - totalPoints;
   };
 
@@ -63,7 +96,7 @@ const App = () => {
   };
 
   const handleAddRace = () => {
-    if (newRace.name.trim() === '') {
+    if (newRace.name.trim() === "") {
       return;
     }
     setRaces((prevRaces) => ({
@@ -74,8 +107,8 @@ const App = () => {
         constitution: newRace.constitution,
         intelligence: newRace.intelligence,
         wisdom: newRace.wisdom,
-        charisma: newRace.charisma
-      }
+        charisma: newRace.charisma,
+      },
     }));
     setNewRace(initialNewRace);
   };
@@ -83,47 +116,60 @@ const App = () => {
   const handleReset = () => {
     setScores(initialScores);
     setPoints(27);
-    setSelectedRace('human');
+    setSelectedRace("human");
   };
 
   return (
-    <div className="App">
-      <h1>D&D Point Buy System</h1>
-      <div>
-        <label htmlFor="race">Select Race:</label>
-        <select id="race" value={selectedRace} onChange={handleRaceChange}>
-          {Object.keys(races).map(race => (
-            <option key={race} value={race}>{race.charAt(0).toUpperCase() + race.slice(1)}</option>
+    <div>
+      <Header />
+      <div className="Pointbuy">
+        <h1>D&D Point Buy System</h1>
+        <div>
+          <label htmlFor="race">Select Race:</label>
+          <select id="race" value={selectedRace} onChange={handleRaceChange}>
+            {Object.keys(races).map((race) => (
+              <option key={race} value={race}>
+                {race.charAt(0).toUpperCase() + race.slice(1)}
+              </option>
+            ))}
+          </select>
+        </div>
+        <PointsRemaining points={points} />
+        <div className="abilities">
+          {Object.keys(scores).map((ability) => (
+            <AbilityScoreInput
+              key={ability}
+              ability={ability}
+              score={scores[ability]}
+              finalScore={getFinalScore(ability)}
+              onScoreChange={handleScoreChange}
+            />
           ))}
-        </select>
-      </div>
-      <PointsRemaining points={points} />
-      <div className="abilities">
-        {Object.keys(scores).map((ability) => (
-          <AbilityScoreInput 
-            key={ability} 
-            ability={ability} 
-            score={scores[ability]} 
-            finalScore={getFinalScore(ability)}
-            onScoreChange={handleScoreChange} 
+        </div>
+        <button onClick={handleReset}>Reset</button>
+        <h2>Add Custom Race</h2>
+        <div className="custom-race-form">
+          <input
+            type="text"
+            name="name"
+            value={newRace.name}
+            onChange={handleNewRaceChange}
+            placeholder="Race Name"
           />
-        ))}
-      </div>
-      <button onClick={handleReset}>Reset</button>
-      <h2>Add Custom Race</h2>
-      <div className="custom-race-form">
-        <input type="text" name="name" value={newRace.name} onChange={handleNewRaceChange} placeholder="Race Name" />
-        {Object.keys(scores).map((ability) => (
-          <input 
-            key={ability} 
-            type="number" 
-            name={ability} 
-            value={newRace[ability]} 
-            onChange={handleNewRaceChange} 
-            placeholder={ability.charAt(0).toUpperCase() + ability.slice(1) + " Modifier"} 
-          />
-        ))}
-        <button onClick={handleAddRace}>Add Race</button>
+          {Object.keys(scores).map((ability) => (
+            <input
+              key={ability}
+              type="number"
+              name={ability}
+              value={newRace[ability]}
+              onChange={handleNewRaceChange}
+              placeholder={
+                ability.charAt(0).toUpperCase() + ability.slice(1) + " Modifier"
+              }
+            />
+          ))}
+          <button onClick={handleAddRace}>Add Race</button>
+        </div>
       </div>
     </div>
   );
@@ -138,15 +184,15 @@ const PointsRemaining = ({ points }) => (
 const AbilityScoreInput = ({ ability, score, finalScore, onScoreChange }) => (
   <div className="ability-score-input">
     <label>{ability.charAt(0).toUpperCase() + ability.slice(1)}</label>
-    <input 
-      type="number" 
-      value={score} 
-      min="8" 
-      max="15" 
-      onChange={(e) => onScoreChange(ability, parseInt(e.target.value))} 
+    <input
+      type="number"
+      value={score}
+      min="8"
+      max="15"
+      onChange={(e) => onScoreChange(ability, parseInt(e.target.value))}
     />
     <span>Final Score: {finalScore}</span>
   </div>
 );
 
-export default App;
+export default Pointbuy;
