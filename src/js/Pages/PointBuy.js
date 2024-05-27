@@ -130,8 +130,9 @@ const Pointbuy = () => {
   return (
     <div>
       <Header />
-      <div className="Pointbuy">
+      <div className="pointbuy">
         <h1>DnD Point Buy System</h1>
+
         <div>
           <label htmlFor="race">Select Race:</label>
           <select id="race" value={selectedRace} onChange={handleRaceChange}>
@@ -143,6 +144,7 @@ const Pointbuy = () => {
           </select>
         </div>
         <PointsRemaining points={points} />
+
         <div className="abilities">
           {Object.keys(scores).map((ability) => (
             <AbilityScoreInput
@@ -155,6 +157,7 @@ const Pointbuy = () => {
           ))}
         </div>
         <button onClick={handleReset}>Reset</button>
+
         <h2>Add Custom Race</h2>
         <div className="custom-race-form">
           <input
