@@ -1,7 +1,14 @@
 body {
   font-family: "Roboto", sans-serif;
-  font-size: 1.2em;
   color: rgb(12, 12, 12);
+}
+
+h1 {
+  font-size: 3em;
+}
+
+span, input, label {
+  font-size: 1.2em;
 }
 
 * {
@@ -37,9 +44,10 @@ button {
   margin: 5px;
   border: none;
   border-radius: 4px;
-  background-color: #a2a2a1;
+  background-color: rgb(139, 139, 139);
   color: white;
   cursor: pointer;
+  font-size: 1.44em;
 }
 
 button:disabled {
@@ -52,31 +60,83 @@ button:disabled {
   display: flex;
   justify-content: space-between;
   color: #f1f4ff;
-  padding: 10px;
+  padding: 1em;
 }
 
 .footer {
+  display: flex;
+  justify-content: center;
   background-color: #343148;
   color: #f1f4ff;
-  padding: 10px;
+  padding: 1em;
 }
 
 .pointbuy {
+  padding: 1em;
+}
+
+.pointbuy h2 {
+  margin-bottom: 1em;
+}
+
+.calculator-container {
   display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
-.race-select, .race-name {
-  font-size: 1em;
+.ability-score-input {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  padding: 10px;
 }
 
-.ability-score-input input[type=number],
-.custom-race-form input[type=number] {
+.ability-score-input label {
+  flex: 1;
+  text-align: left;
+}
+
+.score-controls {
+  display: flex;
+  align-items: center;
+}
+
+.score-controls button {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+
+.score-controls input[type=number] {
   width: 40px;
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 5px;
   margin: 0 5px;
+}
+
+.race-select, .race-name {
+  font-size: 1.2em;
+  padding: 5px;
+}
+
+.custom-race-container {
+  margin-top: 20px;
+}
+
+.custom-race-form .ability-score-input {
+  margin-bottom: 10px;
+}
+
+.custom-race-form .score-controls {
+  display: flex;
+}
+
+.points-remaining {
+  grid-column: span 2;
+  text-align: center;
 }
 
 /*# sourceMappingURL=index.css.map */

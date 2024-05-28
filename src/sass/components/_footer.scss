@@ -1,5 +1,7 @@
 .footer {
+    display: flex;
+    justify-content: center;
     background-color: $secondary-color;
     color: $font-color;
-    padding: 10px;
+    padding: $padding;
   }

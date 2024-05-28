@@ -131,79 +131,87 @@ const Pointbuy = () => {
       <Header />
       <div className="pointbuy">
         <h2>Point Buy Calculator</h2>
+        <div className="calculator-container">
+          <div>
+            <label htmlFor="race">Select Race: </label>
+            <select
+              id="race"
+              value={selectedRace}
+              onChange={handleRaceChange}
+              className="race-select"
+            >
+              {Object.keys(races).map((race) => (
+                <option key={race} value={race}>
+                  {race.charAt(0).toUpperCase() + race.slice(1)}
+                </option>
+              ))}
+            </select>
+            <PointsRemaining points={points} />
+          </div>
 
-        <div>
-          <label htmlFor="race">Select Race:</label>
-          <select id="race" value={selectedRace} onChange={handleRaceChange} className="race-select">
-            {Object.keys(races).map((race) => (
-              <option key={race} value={race}>
-                {race.charAt(0).toUpperCase() + race.slice(1)}
-              </option>
+          <div className="abilities">
+            {Object.keys(scores).map((ability) => (
+              <AbilityScoreInput
+                key={ability}
+                ability={ability}
+                score={scores[ability]}
+                finalScore={getFinalScore(ability)}
+                modifier={calculateModifier(scores[ability])}
+                onScoreChange={handleScoreChange}
+              />
             ))}
-          </select>
+          </div>
+          <button onClick={handleReset}>Reset</button>
         </div>
-        <PointsRemaining points={points} />
 
-        <div className="abilities">
-          {Object.keys(scores).map((ability) => (
-            <AbilityScoreInput
-              key={ability}
-              ability={ability}
-              score={scores[ability]}
-              finalScore={getFinalScore(ability)}
-              modifier={calculateModifier(scores[ability])}
-              onScoreChange={handleScoreChange}
+        <div className="custom-race-container">
+          <h2>Add Custom Race</h2>
+          <div className="custom-race-form">
+            <input
+              type="text"
+              name="name"
+              value={newRace.name}
+              onChange={(e) => setNewRace({ ...newRace, name: e.target.value })}
+              placeholder="Race Name"
+              className="race-name"
             />
-          ))}
-        </div>
-        <button onClick={handleReset}>Reset</button>
-
-        <h2>Add Custom Race</h2>
-        <div className="custom-race-form">
-          <input
-            type="text"
-            name="name"
-            value={newRace.name}
-            onChange={(e) => setNewRace({ ...newRace, name: e.target.value })}
-            placeholder="Race Name"
-            className="race-name"
-          />
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
-          {Object.keys(initialScores).map((ability) => (
-            <div key={ability} className="ability-score-input">
-              <label htmlFor={ability}>
-                {ability.charAt(0).toUpperCase() + ability.slice(1)}
-              </label>
-              <div className="score-controls">
-                <button
-                  type="button"
-                  onClick={() =>
-                    handleNewRaceChange(ability, newRace[ability] - 1)
-                  }
-                  disabled={newRace[ability] <= 0}
-                >
-                  -
-                </button>
-                <input
-                  id={ability}
-                  type="number"
-                  name={ability}
-                  value={newRace[ability]}
-                  readOnly
-                />
-                <button
-                  type="button"
-                  onClick={() =>
-                    handleNewRaceChange(ability, newRace[ability] + 1)
-                  }
-                  disabled={newRace[ability] >= 2}
-                >
-                  +
-                </button>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            {Object.keys(initialScores).map((ability) => (
+              <div key={ability} className="ability-score-input">
+                <label htmlFor={ability}>
+                  {ability.charAt(0).toUpperCase() + ability.slice(1)}
+                </label>
+                <div className="score-controls">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      handleNewRaceChange(ability, newRace[ability] - 1)
+                    }
+                    disabled={newRace[ability] <= 0}
+                  >
+                    -
+                  </button>
+                  <input
+                    id={ability}
+                    type="number"
+                    name={ability}
+                    value={newRace[ability]}
+                    readOnly
+                  />
+                  <button
+                    type="button"
+                    onClick={() =>
+                      handleNewRaceChange(ability, newRace[ability] + 1)
+                    }
+                    disabled={newRace[ability] >= 2}
+                  >
+                    +
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
-          <button onClick={handleAddRace}>Add Race</button>
+            ))}
+            <button onClick={handleAddRace}>Add Race</button>
+          </div>
         </div>
       </div>
       <Footer />
@@ -213,7 +221,7 @@ const Pointbuy = () => {
 
 const PointsRemaining = ({ points }) => (
   <div className="points-remaining">
-    <h3>Points Remaining: {points}</h3>
+    <span>Points Remaining: {points}</span>
   </div>
 );
 
