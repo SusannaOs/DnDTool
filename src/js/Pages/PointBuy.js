@@ -132,20 +132,22 @@ const Pointbuy = () => {
       <div className="pointbuy">
         <h2>Point Buy Calculator</h2>
         <div className="calculator-container">
-          <div>
-            <label htmlFor="race">Select Race: </label>
-            <select
-              id="race"
-              value={selectedRace}
-              onChange={handleRaceChange}
-              className="race-select"
-            >
-              {Object.keys(races).map((race) => (
-                <option key={race} value={race}>
-                  {race.charAt(0).toUpperCase() + race.slice(1)}
-                </option>
-              ))}
-            </select>
+          <div className="racepoints">
+            <div>
+              <label htmlFor="race">Select Race: </label>
+              <select
+                id="race"
+                value={selectedRace}
+                onChange={handleRaceChange}
+                className="race-select"
+              >
+                {Object.keys(races).map((race) => (
+                  <option key={race} value={race}>
+                    {race.charAt(0).toUpperCase() + race.slice(1)}
+                  </option>
+                ))}
+              </select>
+            </div>
             <PointsRemaining points={points} />
           </div>
 
@@ -252,7 +254,7 @@ const AbilityScoreInput = ({
       </button>
     </div>
     <span>Modifier: {modifier >= 0 ? `+${modifier}` : modifier}</span>
-    <span>Final Score: {finalScore}</span>
+    <span className="final-score">Final Score: {finalScore}</span>
   </div>
 );
 

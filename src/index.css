@@ -69,6 +69,7 @@ button:disabled {
   background-color: #343148;
   color: #f1f4ff;
   padding: 1em;
+  font-weight: 700;
 }
 
 .pointbuy {
@@ -97,6 +98,10 @@ button:disabled {
   text-align: left;
 }
 
+.points-remaining, .final-score {
+  font-weight: 700;
+}
+
 .score-controls {
   display: flex;
   align-items: center;
@@ -122,6 +127,12 @@ button:disabled {
   padding: 5px;
 }
 
+.racepoints {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+}
+
 .custom-race-container {
   margin-top: 20px;
 }
@@ -137,6 +148,11 @@ button:disabled {
 .points-remaining {
   grid-column: span 2;
   text-align: center;
+}
+
+.error-message {
+  color: red;
+  font-size: 1.2em;
 }
 
 /*# sourceMappingURL=index.css.map */

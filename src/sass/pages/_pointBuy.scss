@@ -24,6 +24,10 @@
   text-align: left;
 }
 
+.points-remaining, .final-score{
+  font-weight: $font-weight-bold;
+}
+
 .score-controls {
   display: flex;
   align-items: center;
@@ -49,6 +53,12 @@
   padding: 5px;
 }
 
+.racepoints{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+}
+
 .custom-race-container {
   margin-top: 20px;
 }
@@ -64,4 +74,9 @@
 .points-remaining {
   grid-column: span 2;
   text-align: center;
+}
+
+.error-message {
+  color: red;
+  font-size: $base-font-size;
 }
