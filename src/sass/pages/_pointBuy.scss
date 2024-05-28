@@ -1,3 +1,11 @@
+.pointbuy{
+  display: grid;
+}
+
+.race-select, .race-name{
+  font-size: 1em;
+}
+
 .ability-score-input input[type="number"],
 .custom-race-form input[type="number"] {
   width: 40px;

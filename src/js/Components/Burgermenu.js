@@ -7,6 +7,10 @@ function BurgerMenu({ links }) {
         setIsOpen(!isOpen);
     };
 
+    const closeMenu = () => {
+        setIsOpen(false);
+    };
+
     return (
         <div className="burger-menu">
             <button className="burger-icon" onClick={toggleMenu}>
@@ -14,6 +18,9 @@ function BurgerMenu({ links }) {
             </button>
             {isOpen && (
                 <div className="menu-items">
+                    <button className="close-button" onClick={closeMenu}>
+                        &times;
+                    </button>
                     {/* Map through the links passed from the parent */}
                     {links.map((link, index) => (
                         <a key={index} href={link.url}>{link.text}</a>

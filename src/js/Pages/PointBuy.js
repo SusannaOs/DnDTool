@@ -130,11 +130,11 @@ const Pointbuy = () => {
     <div>
       <Header />
       <div className="pointbuy">
-        <h1>DnD Point Buy System</h1>
+        <h2>Point Buy Calculator</h2>
 
         <div>
           <label htmlFor="race">Select Race:</label>
-          <select id="race" value={selectedRace} onChange={handleRaceChange}>
+          <select id="race" value={selectedRace} onChange={handleRaceChange} className="race-select">
             {Object.keys(races).map((race) => (
               <option key={race} value={race}>
                 {race.charAt(0).toUpperCase() + race.slice(1)}
@@ -166,6 +166,7 @@ const Pointbuy = () => {
             value={newRace.name}
             onChange={(e) => setNewRace({ ...newRace, name: e.target.value })}
             placeholder="Race Name"
+            className="race-name"
           />
           {errorMessage && <p className="error-message">{errorMessage}</p>}
           {Object.keys(initialScores).map((ability) => (
@@ -212,7 +213,7 @@ const Pointbuy = () => {
 
 const PointsRemaining = ({ points }) => (
   <div className="points-remaining">
-    <h2>Points Remaining: {points}</h2>
+    <h3>Points Remaining: {points}</h3>
   </div>
 );
 

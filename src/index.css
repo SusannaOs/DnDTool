@@ -1,6 +1,7 @@
 body {
   font-family: "Roboto", sans-serif;
-  color: #f1f4ff;
+  font-size: 1.2em;
+  color: rgb(12, 12, 12);
 }
 
 * {
@@ -36,7 +37,7 @@ button {
   margin: 5px;
   border: none;
   border-radius: 4px;
-  background-color: #007bff;
+  background-color: #a2a2a1;
   color: white;
   cursor: pointer;
 }
@@ -48,6 +49,8 @@ button:disabled {
 
 .header {
   background-color: #343148;
+  display: flex;
+  justify-content: space-between;
   color: #f1f4ff;
   padding: 10px;
 }
@@ -56,6 +59,14 @@ button:disabled {
   background-color: #343148;
   color: #f1f4ff;
   padding: 10px;
+}
+
+.pointbuy {
+  display: grid;
+}
+
+.race-select, .race-name {
+  font-size: 1em;
 }
 
 .ability-score-input input[type=number],

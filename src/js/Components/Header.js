@@ -10,10 +10,10 @@ function Header() {
     ];
 
   return (
-    <header className="header">
+    <div className="header">
           <h1>DnD Tools</h1>
           <BurgerMenu links={links} />
-    </header>
+    </div>
   );
 }
 
