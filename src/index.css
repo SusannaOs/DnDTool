@@ -7,6 +7,10 @@ h1 {
   font-size: 3em;
 }
 
+h2 {
+  font-size: 2em;
+}
+
 span, input, label {
   font-size: 1.3em;
 }
@@ -63,6 +67,11 @@ button:disabled {
   color: #f1f4ff;
   padding: 1em;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.header a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .footer {
@@ -139,13 +148,6 @@ button:disabled {
   margin: auto;
 }
 
-.pointbuy h2,
-.ability-score-input span,
-.custom-race-form button,
-.points-remaining {
-  cursor: default;
-}
-
 .pointbuy h2 {
   margin-bottom: 1em;
   margin-top: 1em;
@@ -188,6 +190,7 @@ button:disabled {
   width: 30px;
   height: 30px;
   text-align: center;
+  cursor: pointer;
 }
 
 .score-controls input[type=number] {
@@ -225,6 +228,7 @@ button:disabled {
 .error-message {
   color: red;
   font-size: 1.3em;
+  cursor: default;
 }
 
 @media (max-width: 1200px) {

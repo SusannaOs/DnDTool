@@ -4,13 +4,6 @@
   margin: auto;
 }
 
-.pointbuy h2,
-.ability-score-input span,
-.custom-race-form button,
-.points-remaining {
-    cursor: default;
-}
-
 .pointbuy h2 {
   margin-bottom: $padding;
   margin-top: $padding;
@@ -53,6 +46,7 @@
   width: 30px;
   height: 30px;
   text-align: center;
+  cursor: pointer;
 }
 
 .score-controls input[type="number"] {
@@ -90,6 +84,7 @@
 .error-message {
   color: red;
   font-size: $base-font-size;
+  cursor: default;
 }
 
 @media (max-width: 1200px) {

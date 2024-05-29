@@ -254,7 +254,7 @@ const AbilityScoreInput = ({
       </button>
     </div>
     <span>Modifier: {modifier >= 0 ? `+${modifier}` : modifier}</span>
-    <span className="final-score">Final Score: {finalScore}</span>
+    <span className="final-score">Ability Score: {finalScore}</span>
   </div>
 );
 

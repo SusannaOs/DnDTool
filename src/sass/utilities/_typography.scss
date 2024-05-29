@@ -16,6 +16,10 @@ body {
     font-size: $heading-font-size;
   }
 
+  h2{
+    font-size: $heading-font-size/1.5;
+  }
+
   span, input, label{
     font-size: $base-font-size;
   }
