@@ -8,7 +8,7 @@ h1 {
 }
 
 span, input, label {
-  font-size: 1.2em;
+  font-size: 1.3em;
 }
 
 * {
@@ -47,7 +47,7 @@ button {
   background-color: rgb(139, 139, 139);
   color: white;
   cursor: pointer;
-  font-size: 1.44em;
+  font-size: 1.56em;
 }
 
 button:disabled {
@@ -59,8 +59,10 @@ button:disabled {
   background-color: #343148;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   color: #f1f4ff;
   padding: 1em;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .footer {
@@ -70,20 +72,85 @@ button:disabled {
   color: #f1f4ff;
   padding: 1em;
   font-weight: 700;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
 }
 
+.burger-menu {
+  position: relative;
+}
+
+.burger-icon {
+  font-size: 1.7647058824em;
+  cursor: pointer;
+}
+
+.menu-items {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 250px;
+  background-color: rgb(139, 139, 139);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-items.open {
+  transform: translateX(0);
+}
+
+.close-button {
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  align-self: flex-end;
+  margin-bottom: 20px;
+}
+
+.menu-items a {
+  text-decoration: none;
+  color: #f1f4ff;
+  padding: 10px 0;
+  font-size: 1.95em;
+  font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .menu-items {
+    width: 100%; /* Make the menu fill the entire screen width */
+  }
+  .menu-items a {
+    text-align: center;
+    padding-left: 40px;
+  }
+}
 .pointbuy {
   padding: 1em;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .pointbuy h2 {
   margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 .calculator-container {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
+}
+
+.racepoints {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  gap: 10px;
 }
 
 .ability-score-input {
@@ -94,7 +161,6 @@ button:disabled {
 }
 
 .ability-score-input label {
-  flex: 1;
   text-align: left;
 }
 
@@ -123,18 +189,13 @@ button:disabled {
 }
 
 .race-select, .race-name {
-  font-size: 1.2em;
+  font-size: 1.3em;
   padding: 5px;
-}
-
-.racepoints {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: center;
 }
 
 .custom-race-container {
   margin-top: 20px;
+  padding-left: 6px;
 }
 
 .custom-race-form .ability-score-input {
@@ -152,7 +213,68 @@ button:disabled {
 
 .error-message {
   color: red;
-  font-size: 1.2em;
+  font-size: 1.3em;
+}
+
+@media (max-width: 1200px) {
+  .calculator-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .points-remaining {
+    grid-column: span 2;
+  }
+}
+@media (max-width: 768px) {
+  body {
+    font-size: 0.8333333333em;
+  }
+  .calculator-container {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 480px) {
+  body {
+    font-size: 0.8666666667em;
+  }
+  .pointbuy h2 {
+    margin-bottom: 1em;
+    margin-top: 1em;
+    text-align: center;
+  }
+  .ability-score-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .ability-score-input {
+    grid-template-columns: 1fr;
+  }
+  .ability-score-input label,
+  .ability-score-input .final-score,
+  .ability-score-input .score-controls {
+    margin-bottom: 5px;
+  }
+  .points-remaining {
+    text-align: center;
+  }
+  .custom-race-container,
+  .custom-race-form .ability-score-input {
+    padding: 0;
+    margin: 0;
+  }
+  .custom-race-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .race-name {
+    margin-bottom: 1em;
+  }
+  .racepoints {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

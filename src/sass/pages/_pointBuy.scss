@@ -1,9 +1,12 @@
 .pointbuy {
   padding: $padding;
+  max-width: 1200px;
+  margin: auto;
 }
 
-.pointbuy h2{
+.pointbuy h2 {
   margin-bottom: $padding;
+  margin-top: $padding;
 }
 
 .calculator-container {
@@ -12,19 +15,25 @@
   gap: 20px;
 }
 
+.racepoints {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
 .ability-score-input {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
   padding: 10px;
 }
 
 .ability-score-input label {
-  flex: 1;
   text-align: left;
 }
 
-.points-remaining, .final-score{
+.points-remaining, .final-score {
   font-weight: $font-weight-bold;
 }
 
@@ -53,14 +62,9 @@
   padding: 5px;
 }
 
-.racepoints{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: center;
-}
-
 .custom-race-container {
   margin-top: 20px;
+  padding-left: 6px;
 }
 
 .custom-race-form .ability-score-input {
@@ -79,4 +83,79 @@
 .error-message {
   color: red;
   font-size: $base-font-size;
+}
+
+@media (max-width: 1200px) {
+
+  .calculator-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .points-remaining {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+
+  body{
+    font-size: $padding/1.2;
+  }
+
+  .calculator-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+
+  body{
+    font-size: $base-font-size/1.5;
+  }
+
+  .pointbuy h2 {
+    margin-bottom: $padding;
+    margin-top: $padding;
+    text-align: center;
+  }
+
+  .ability-score-input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .ability-score-input {
+    grid-template-columns: 1fr;
+  }
+
+  .ability-score-input label,
+  .ability-score-input .final-score,
+  .ability-score-input .score-controls {
+    margin-bottom: 5px;
+  }
+
+  .points-remaining {
+    text-align: center;
+  }
+
+  .custom-race-container,
+  .custom-race-form .ability-score-input {
+    padding: 0;
+    margin: 0;
+  }
+  .custom-race-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .race-name{
+    margin-bottom: $padding;
+  }
+
+  .racepoints {
+    display: flex;
+    flex-direction: column;
+  }
 }
