@@ -1,0 +1,30 @@
+$primary-font-family: "Roboto", sans-serif;
+
+$base-font-size: 1.3em;
+$heading-font-size: 3em;
+
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+// Base Typography
+body {
+    font-family: $primary-font-family;
+    color: $text-color;
+  }
+
+  h1 {
+    font-size: $heading-font-size;
+  }
+
+  h2{
+    font-size: $heading-font-size/1.5;
+  }
+
+  span, input, label{
+    font-size: $base-font-size;
+  }
+
+
+
+
+

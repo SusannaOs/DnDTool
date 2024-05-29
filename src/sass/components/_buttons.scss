@@ -1,0 +1,16 @@
+button {
+    @include reset-button;
+    padding: 5px 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: $accent-color;
+    color: white;
+    cursor: pointer;
+    font-size: $base-font-size*1.2;
+  }
+
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
