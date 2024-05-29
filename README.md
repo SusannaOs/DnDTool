@@ -6,7 +6,7 @@ Collection of handy DnD tools in one website.
 
 * Adding a function to save your work on pc if needed.
 * Making proper explanations with info buttons for new players. Opening with hovering over if needed.
-* Header and footer with navigation.
+* ~~Header and footer with navigation.~~
 * How to make the combat tracker save as much time as possible in turn based rounds and be user friendly.
 * Making new page for collection of items, spells etc. and a way to add custom ones.
 * Another page for full character creation. Could be implemented with the point buy system as it kind of is part of it.
