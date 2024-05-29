@@ -43,6 +43,10 @@
     font-weight: $font-weight-bold;
 }
 
+.menu-items a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 480px) {
     .menu-items {
         width: 100%; /* Make the menu fill the entire screen width */

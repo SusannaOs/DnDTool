@@ -4,6 +4,13 @@
   margin: auto;
 }
 
+.pointbuy h2,
+.ability-score-input span,
+.custom-race-form button,
+.points-remaining {
+    cursor: default;
+}
+
 .pointbuy h2 {
   margin-bottom: $padding;
   margin-top: $padding;
